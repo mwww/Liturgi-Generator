@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="homepage_container">
+    <h1 class="homepage_title">Hello, world!</h1>
+    <h3 class="homepage_text">Welcome to the homepage of Liturgi Generator</h3>
+    <img class="homepage_img" src="{% static 'assets/logo_with_title.png' %}" alt="Liturgi Generator logo"/>
+    <h3 class="homepage_text">Ingin membuat liturgi? Klik <a href={% url "generator" %}>di sini</a>!</h3>
+</div>
+{% endblock %}

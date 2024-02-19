@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Generator</h1>
+<form method="post">
+    {% csrf_token %} 
+    <div class="form_container">
+        <div class="table_container">
+            <div class="table_left_container">
+                <table class="table_left">
+                    <tr>
+                        <td>Tanggal</td>
+                        <td>:
+                            {% if date %}
+                            <input type="text" name="date" value="{{ date }}" required/>
+                            {% else %}
+                            <input type="text" name="date" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tema</td>
+                        <td>: 
+                            {% if theme %}
+                            <input type="text" name="theme" value="{{ theme }}" required/>
+                            {% else %}
+                            <input type="text" name="theme" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pendeta
+                            <span class="helper">
+                                <p>Tulis gelar secara lengkap (Pdt./Pnt./Em.)
+                                </p>
+                            </span>
+                        </td>
+                        <td>: 
+                            {% if pdt %}
+                            <input type="text" name="pdt" value="{{ pdt }}" required/>
+                            {% else %}
+                            <input type="text" name="pdt" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Penatua</td>
+                        <td>: 
+                            {% if pnt %}
+                            <input type="text" name="pnt" value="{{ pnt }}" required/>
+                            {% else %}
+                            <input type="text" name="pnt" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><h3 style='margin:0px'>Ayat-ayat Ibadah</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Firman</td>
+                        <td>: 
+                            {% if verseFirman %}
+                            <input type="text" name="verseFirman" value="{{ verseFirman }}" required/>
+                            {% else %}
+                            <input type="text" name="verseFirman" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kata Pembuka</td>
+                        <td>: 
+                            {% if verseKataPembuka%}
+                            <input type="text" name="verseKataPembuka" value="{{ verseKataPembuka }}" required/>
+                            {% else %}
+                            <input type="text" name="verseKataPembuka" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Berita Anugerah</td>
+                        <td>: 
+                            {% if verseBeritaAnugerah %}
+                            <input type="text" name="verseBeritaAnugerah" value="{{ verseBeritaAnugerah }}" required/>
+                            {% else %}
+                            <input type="text" name="verseBeritaAnugerah" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Persembahan</td>
+                        <td>: 
+                            {% if versePersembahan %}
+                            <input type="text" name="versePersembahan" value="{{ versePersembahan }}" required/>
+                            {% else %}
+                            <input type="text" name="versePersembahan" required/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table_right_container">
+                <table class="table_right">
+                    <tr>
+                        <td colspan='2'>
+                            <h3 style='margin:0px'>
+                                Lagu-lagu Ibadah
+                            </h3>
+                            <span class="helper">
+                                <p style='margin:10px 0 0 0'>Jika lagu tidak ada di buku lagu, tulis Judul Lagu saja.<br>Namun, lirik lagu nantinya <b>harus</b> diisi secara manual.
+                                </p>
+                            </span>
+                        </td>
+                    </tr>
+                    {% if songZip %}
+                        {% for songLabel, songBook, songBook_number, songBook_verse, songTitle, songLyrics in songZip %}
+                        <tr>
+                            <td class="song_labels">{{ songLabel }}</td>
+                            <td>
+                                <div class='song_input'>
+                                    :
+                                    {% if songBook %}
+                                    <input type='text' class='songBook' name='songBook' placeholder='Buku' value="{{ songBook }}"/>
+                                    {% else %}
+                                    <input type='text' class='songBook' name='songBook' placeholder='Buku'/>
+                                    {% endif %}
+
+                                    {% if songBook_number %}
+                                    <input type='text' class='songBook_number' name='songBook_number' placeholder='No.' value="{{ songBook_number }}"/>
+                                    {% else %}
+                                    <input type='text' class='songBook_number' name='songBook_number' placeholder='No.'/>
+                                    {% endif %}
+
+                                    :
+                                    {% if songBook_verse %}
+                                    <input type='text' class='songBook_verse' name='songBook_verse' placeholder='Bait' value="{{ songBook_verse }}"/>
+                                    {% else %}
+                                    <input type='text' class='songBook_verse' name='songBook_verse' placeholder='Bait'/>
+                                    {% endif %}
+                                </div>
+                                {% if songTitle %}
+                                <input type='text' class='songTitle' name='songTitle' placeholder='Judul Lagu' value="{{ songTitle }}" required>
+                                {% else %}
+                                <input type='text' class='songTitle' name='songTitle' placeholder='Judul Lagu' required>
+                                {% endif %}
+
+                                {% if songBook == "" %}
+                                <textarea class="songLyrics" name="songLyrics" placeholder="Tambahkan lirik di sini">{{ songLyrics }}</textarea>
+                                {% else %}
+                                <textarea class="songLyrics_hide" name="songLyrics" tabindex="999" readonly></textarea>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        {% for songLabel in songLabels %}
+                        <tr>
+                            <td class="song_labels">{{ songLabel }}</td>
+                            <td>
+                                <div class='song_input'>
+                                    :
+                                    <input type='text' class='songBook' name='songBook' placeholder='Buku'/>
+                                    <input type='text' class='songBook_number' name='songBook_number' placeholder='No.'/>
+                                    :
+                                    <input type='text' class='songBook_verse' name='songBook_verse' placeholder='Bait'/>
+                                </div>
+                                <input type='text' class='songTitle' name='songTitle' placeholder='Judul Lagu' required/>
+                                <textarea class="songLyrics_hide" name="songLyrics" tabindex="999" readonly></textarea>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+        <div class="bottom_container">
+            <p>Apakah ada pelayanan pujian? <input type="checkbox" name="pelayananPujian"/></p>
+            <button type="submit">Generate</button>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

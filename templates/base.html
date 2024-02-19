@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Liturgi Generator</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}?v={{ STATIC_FILE_TIMESTAMP }}"> 
+        <!-- adding parameters to the css filename is used to prevent browser stylesheet caching -->
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="navbox">
+                <a class="navlink_logo" href="{% url 'index' %}">
+                    <div class="navlogo_container">
+                        <img class="navlogo" src="{% static "assets/logo_navbar.png" %}"/>
+                    </div>
+                </a>
+                <a class="navlink" href="{% url 'index' %}">
+                    <span class="navlink-container">
+                        <p class="navtext" >Home</p>
+                    </span>
+                </a>
+                <a class="navlink" href="{% url 'generator' %}">
+                    <span class="navlink-container">
+                        <p class="navtext">Generator</p>
+                    </span>
+                </a>
+                <a class="navlink" href="{% url 'aboutUs' %}">
+                    <span class="navlink-container">
+                        <p class="navtext">About Us</p>
+                    </span>
+                </a>
+            </div>
+        </nav>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

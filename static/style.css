@@ -1,0 +1,274 @@
+body {
+    background-color: rgb(197, 197, 197);
+    font-family: 'Segoe UI';
+}
+
+main {
+    color:rgb(5, 5, 58);
+    margin: 100px 0px 95px 0px;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+/* NAV BAR */
+.nav {
+    background-color: rgb(5, 5, 58);
+    color: lightgrey;
+    height: 12vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.navbox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navlink:last-child {
+    margin-left: auto;
+    margin-right: 8vw;
+}
+
+.last-nav-link-block {
+    display: block;
+}
+
+.navlink_logo {
+    margin-right: 15px;
+}
+
+.navlogo_container {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgb(228, 242, 255);
+}
+
+.navlogo {
+    display: block;
+    margin-top: 4%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.navlink-container {
+    height: 100%;
+    padding: 0 25px 0 25px;
+    display: flex;
+    align-items: center;
+}
+
+.navlink-container:hover {
+    background-color: rgb(9, 9, 99);
+}
+
+.navlink {
+    text-decoration: none;
+}
+
+.navtext {
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    color: lightgrey;
+    border-bottom: 2px solid lightgray;
+}
+
+/*HOME PAGE*/
+.homepage_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.homepage_title {
+    margin: 0;
+    color: rgb(5, 5, 58);
+    box-sizing: border-box;
+    padding: 0 13% 10px 13%;
+    border-bottom: solid black 2px;
+}
+
+.homepage_text {
+    margin-top: 10px;
+}
+
+.homepage_img {
+    width: 35%;
+    margin-bottom: 5px;
+    background-color: lightgray;
+    border: solid rgb(5, 5, 58) 4px;
+    border-radius: 10px;
+    padding: 5px 60px 5px 60px;
+}
+
+/* ABOUT US */
+.about_us_text {
+    width: 55%;
+    text-align: justify;
+}
+
+/* FORM TABLE */
+.form_container {
+    background-color: lightgrey;
+    border: 2px solid rgb(5, 5, 58);
+    max-width: 100%;
+    border-radius: 15px;
+    padding: 15px 15px 15px 15px;
+    font-size: 18px
+}
+
+.table_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table_container table {
+    /* width: 49%; */
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border: 1px solid rgb(5, 5, 58);
+    border-radius: 10px;
+    padding: 15px 0 15px 15px;
+}
+
+table.table_right {
+    max-width: 100%;
+}
+
+.table_container tr {
+    vertical-align: text-top;
+}
+
+.song_labels {
+    width: 30%;
+}
+
+.bottom_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Set table size */
+.table_left, .table_left tr, .table_left td, .table_right, .table_right tr, .table_right td {
+    height: 35px;
+}
+
+.table_container td {
+    padding-bottom: 15px;
+}
+
+.table_left_container {
+    width: 49%;
+    max-width: 49%;
+}
+
+.table_right_container {
+    width: 49%;
+    max-width: 49%;
+}
+
+/* Input bar */
+table input{
+    font-size: 14px;
+    width: 85%;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid black;
+}
+
+input:focus {
+    outline: none;
+    background-color: rgba(189,189,189,255);
+    border-radius: 5px;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 50px lightgrey inset;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px rgba(189,189,189,255) inset;
+}
+
+div.song_input {
+    display: flex;
+    align-items: center;
+}
+
+input.songTitle {
+    margin-top: 5px;
+}
+
+input.songBook, input.songBook_verse, input.songBook_number {
+    box-sizing: border-box;
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    padding: 0 10px 0 10px;
+    border-radius: 10px;
+    margin-left: 5px;
+}
+
+input.songBook, input.songBook_verse {
+    width: 20%;
+}
+
+input.songBook_number {
+    width: 15%;
+}
+
+textarea.songLyrics {
+    box-sizing: border-box;
+    resize: vertical;
+    width: 85%;
+    max-height: 250px;
+    min-height: 100px;
+    margin-top: 5px;
+    padding: 5px 10px 5px 10px;
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    background-color: rgba(0,0,0,0);
+    border-radius: 5px;
+}
+
+textarea.songLyrics:focus {
+    background-color: rgb(189,189,189);
+}
+
+textarea.songLyrics_hide {
+    position: absolute;
+    left: -999em;
+}
+
+/* Small text helper */
+.table_container .helper {
+    font-size: 12px;
+}
+.table_container .helper p {
+    margin-top: 0;
+    line-height: 15px;
+}
+
+/* Generate button */
+button {
+    width: 30%;
+    font-size: 18px;
+    padding: 10px 15px 10px 15px;
+    border: 1px solid black;
+    border-radius: 15px;
+}

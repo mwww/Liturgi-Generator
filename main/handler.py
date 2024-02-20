@@ -26,10 +26,11 @@ def NewDocument(data):
             'completeTitle': ''
         }
         if songBook:
-            songDict['completeTitle'] = f'{songDict['songBook']} {songDict['songBook_number']} : {songDict['songBook_verse']} "{songDict['songTitle']}"'
+            # songDict['completeTitle'] = f'{songDict['songBook']} {songDict['songBook_number']} : {songDict['songBook_verse']} "{songDict['songTitle']}"'
+            songDict['completeTitle'] = songDict['songBook'] + " " + songDict['songBook_number'] + " : " + songDict['songBook_verse'] + ' "' + songDict['songTitle'] + '"'
             songDict['songLyrics'] = GetLyricsFile(songDict) #Search for lyrics in the book, if book exist
         else:
-            songDict['completeTitle'] = f'{songDict['songTitle']}'
+            songDict['completeTitle'] = songDict['songTitle']
         songList.append(songDict)
 
 

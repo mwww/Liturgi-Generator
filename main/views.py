@@ -58,7 +58,7 @@ def generator(response):
             # Make New Document
             NewDocument(data)
 
-            fileName = f'Liturgi Remaja - {response.POST['date']}.docx'
+            fileName = f'Liturgi Remaja - {response.POST["date"]}.docx'
 
             # Send The Document to User
             with open('New_Liturgi.docx', 'rb') as document_file:
